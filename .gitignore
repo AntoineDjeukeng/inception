@@ -1,0 +1,11 @@
+.env.local
+.env
+secrets/
+.DS_Store
+*.log
+*.swp
+*.swo
+node_modules/
+dist/
+build/
+vendor/
