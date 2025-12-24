@@ -16,6 +16,12 @@ services:
     container_name: wordpress
     depends_on:
       - mariadb
+    env_file:
+      - .env
+    secrets:
+      - db_password
+    volumes:
+      - wordpress_data:/var/www/html
     networks:
       - inception
     restart: unless-stopped
@@ -41,7 +47,12 @@ volumes:
       type: none
       o: bind
       device: /home/antoine/data/mariadb
-
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/antoine/data/wordpress
 secrets:
   db_root_password:
     file: ../secrets/db_root_password.txt
